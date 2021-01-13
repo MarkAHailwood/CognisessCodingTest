@@ -28,7 +28,7 @@ export class FetchDataComponent implements OnInit {
   time: number = 0;
   display;
   interval;
-  timesTakenArray: Array<number>; 
+  timesTakenArray: number[] = []; 
 
   constructor(private apiService: ApiService) { }
 
@@ -80,6 +80,8 @@ export class FetchDataComponent implements OnInit {
     this.pauseTimer();
     this.singleTest.Result = this.result;
     this.singleTest.TimeTaken = this.time;
+    this.timesTakenArray.push(this.time);
+    this.singleTest.TimesTaken = this.timesTakenArray; 
     this.apiService.addTest(this.singleTest)
       .subscribe(data => {
         console.log(data);
@@ -89,9 +91,8 @@ export class FetchDataComponent implements OnInit {
         this.result = "";
         this.displayNumber = true;
         this.functionNr1();
-        this.score = data.score;
-        this.startTimer();
-        this.timesTakenArray = data.TimesTaken;
+        this.score = data.score;        
+        this.startTimer();     
       })
   }
 

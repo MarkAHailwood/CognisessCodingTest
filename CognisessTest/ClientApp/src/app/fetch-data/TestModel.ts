@@ -7,5 +7,5 @@ export class TestModel {
   Result: string;
   Complete: boolean;
   TimeTaken: number;
-  TimesTaken: Array<number>;
+  TimesTaken: number[] = [];
 }

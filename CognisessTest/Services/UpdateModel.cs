@@ -12,11 +12,12 @@ namespace CognisessTest.Services
         private string preValue = "";
         private string secondaryParameter = "10000";
         private long r = 0;
-        public List<int> timeTaken = new List<int>();
+        //public List<int> timeTaken = new List<int>();
 
         public TestModel Updater(TestModel newModel)
         {
-            if(newModel.TestNumber == 0)
+            List<int> timeTaken = new List<int>();
+            if (newModel.TestNumber == 0)
             {
                 r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter));
                 rConverted = r.ToString();
@@ -30,12 +31,13 @@ namespace CognisessTest.Services
             {
                 if (newModel.Result == rConverted) newModel.Score += 10;
                 newModel.TestNumber++;
+                timeTaken.Add(newModel.TimeTaken);
                 newModel.TimesTaken = timeTaken.ToArray();
                 return newModel;
             }
             else
             {
-                timeTaken.Add(newModel.TimeTaken);
+                if(newModel.TimesTaken[0] > 0) foreach(int x in newModel.TimesTaken) timeTaken.Add(x);
                 if (newModel.Result == newModel.RandomNumber && newModel.Result != "") newModel.Score += 10;
                 int[] arrayForLoop = new int[newModel.TestNumber];
                 foreach(int i in arrayForLoop)
