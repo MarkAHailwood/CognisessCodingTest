@@ -1,7 +1,3 @@
-<!--<button (click)='startTimer()'>Start Timer</button>
-<button (click)='pauseTimer()'>Pause</button>
-
-<p>{{display}} Seconds</p>-->
 <div *ngIf="displayPrimaryDiv">
   <h3>Welcome to the number memory game!</h3>
   <p>You will be shown a number on screen for 3 seconds. That number shall disappear and you will be prompted to enter it into an input - and click Submit!.</p>
@@ -9,6 +5,7 @@
   <p>Ready? Click Go! to begin.</p>
   <button class="btn btn-primary" (click)="beginGame()">Go!</button>
 </div>
+
 <div *ngIf="displaySecondaryDiv">
   <div *ngIf="displayNumber2 == true">
     <h3 *ngIf="displayNumber == true">{{randomNo}}</h3>
@@ -29,6 +26,20 @@
 
   <div *ngIf="displayNumber2 == false">
     <h1>Your score is: {{score}}</h1>
+    <h3>Total attempts: {{testsTaken}}</h3>
+    <h3>Total correct: {{testsPassed}}</h3>
+    <div class="chart-wrapper">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
     <button class="btn btn-primary" (click)="restartGame()">Retry!</button>
   </div>
 </div>
+
+
