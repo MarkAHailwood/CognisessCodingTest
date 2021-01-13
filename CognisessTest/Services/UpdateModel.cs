@@ -10,12 +10,12 @@ namespace CognisessTest.Services
     {
         private string rConverted = "";
         private string preValue = "";
-        private string secondaryParameter = "1000";
+        private string secondaryParameter = "10000";
+        private long r = 0;
+        public List<int> timeTaken = new List<int>();
+
         public TestModel Updater(TestModel newModel)
         {
-            long r = 0;
-            string r2 = "";
-
             if(newModel.TestNumber == 0)
             {
                 r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter));
@@ -30,21 +30,25 @@ namespace CognisessTest.Services
             {
                 if (newModel.Result == rConverted) newModel.Score += 10;
                 newModel.TestNumber++;
+                newModel.TimesTaken = timeTaken.ToArray();
                 return newModel;
             }
             else
             {
-                if (newModel.Result == newModel.RandomNumber || newModel.Result == newModel.PreValue) newModel.Score += 10;
+                timeTaken.Add(newModel.TimeTaken);
+                if (newModel.Result == newModel.RandomNumber && newModel.Result != "") newModel.Score += 10;
                 int[] arrayForLoop = new int[newModel.TestNumber];
                 foreach(int i in arrayForLoop)
                 {
                     secondaryParameter += "0";
                 }
-                r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter));
+                if (secondaryParameter.Length < 10) r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter));
+                else r = Convert.ToInt64(newModel.RandomNumber) * 15;
                 rConverted = r.ToString();
                 newModel.PreValue = newModel.RandomNumber;
                 newModel.RandomNumber = rConverted;
                 newModel.TestNumber++;
+                newModel.TimesTaken = timeTaken.ToArray();
 
                 return newModel;
             }

@@ -6,4 +6,6 @@ export class TestModel {
   UserName: string;
   Result: string;
   Complete: boolean;
+  TimeTaken: number;
+  TimesTaken: Array<number>;
 }

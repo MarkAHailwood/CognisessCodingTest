@@ -14,6 +14,8 @@ namespace CognisessTest.Models
         public string UserName { get; set; }
         public string Result { get; set; }
         public bool Complete { get; set; }
+        public int TimeTaken { get; set; }
+        public int[] TimesTaken { get; set; }
         public TestModel()
         {
             RandomNumber = "";
@@ -22,6 +24,7 @@ namespace CognisessTest.Models
             UserName = "";
             Result = "";
             Complete = false;
+            TimeTaken = 0;
         }
     }
 }

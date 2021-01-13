@@ -25,6 +25,10 @@ export class FetchDataComponent implements OnInit {
   displayPrimaryDiv: boolean = true;
   displaySecondaryDiv: boolean = false;
   score: number = 0;
+  time: number = 0;
+  display;
+  interval;
+  timesTakenArray: Array<number>; 
 
   constructor(private apiService: ApiService) { }
 
@@ -36,6 +40,7 @@ export class FetchDataComponent implements OnInit {
     this.displayPrimaryDiv = false;
     this.displaySecondaryDiv = true;
     this.refreshTests();
+    this.startTimer();
   }
 
   restartGame() {
@@ -68,10 +73,13 @@ export class FetchDataComponent implements OnInit {
       this.displayNumber2 = false;
     }, 60000);
     this.displayNumber2 = true;
+    this.singleTest.Complete = true;
   }
 
   addAnswer() {
+    this.pauseTimer();
     this.singleTest.Result = this.result;
+    this.singleTest.TimeTaken = this.time;
     this.apiService.addTest(this.singleTest)
       .subscribe(data => {
         console.log(data);
@@ -82,6 +90,27 @@ export class FetchDataComponent implements OnInit {
         this.displayNumber = true;
         this.functionNr1();
         this.score = data.score;
+        this.startTimer();
+        this.timesTakenArray = data.TimesTaken;
       })
+  }
+
+  startTimer() {
+    this.time = 0;
+    this.interval = setInterval(() => {
+      if (this.time === 0) {
+        this.time++;
+      } else {
+        this.time++;
+      }
+      this.display = this.transform(this.time)
+    }, 1000);
+  }
+  transform(value: number): string {
+    const minutes: number = Math.floor(value / 60);
+    return minutes + ':' + (value - minutes * 60);
+  }
+  pauseTimer() {
+    clearInterval(this.interval);
   }
 }
