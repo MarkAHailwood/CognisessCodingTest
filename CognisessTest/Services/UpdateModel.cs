@@ -47,7 +47,6 @@ namespace CognisessTest.Services
                 if (secondaryParameter.Length < 10) r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter));
                 else r = Convert.ToInt64(newModel.RandomNumber) * 15;
                 rConverted = r.ToString();
-                newModel.PreValue = newModel.RandomNumber;
                 newModel.RandomNumber = rConverted;
                 newModel.TestNumber++;
                 newModel.TimesTaken = timeTaken.ToArray();

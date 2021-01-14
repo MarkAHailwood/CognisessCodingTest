@@ -18,7 +18,6 @@ export class FetchDataComponent implements OnInit {
   singleTest = new TestModel();
   blankTest = new TestModel();
   tests: TestModel[];
-  userName: string = "Mark";
   randomNo: string = "";
   result: string = "";
   preValue: string = "";
@@ -36,6 +35,8 @@ export class FetchDataComponent implements OnInit {
   testCounter: string[] = [];
   timerArray: number[] = [];
   constructor(private apiService: ApiService) { }
+    ngOnInit() {
+    }
 
   beginGame() {
     this.functionNr2();
@@ -48,6 +49,8 @@ export class FetchDataComponent implements OnInit {
   restartGame() {
     this.displayPrimaryDiv = true;
     this.displaySecondaryDiv = false;
+    this.timesTakenArray = [];
+    this.testCounter = [];
     this.refreshTests();
   }
 
@@ -56,10 +59,8 @@ export class FetchDataComponent implements OnInit {
     this.apiService.getTest(this.blankTest)
       .subscribe(data => {
         this.singleTest = data;
-        console.log("i refershed");
         this.randomNo = data.randomNumber;
         this.result = data.result;
-        this.testCounter.push('Attempt 1');
         this.functionNr1();
       })
   }
@@ -74,9 +75,10 @@ export class FetchDataComponent implements OnInit {
   functionNr2() {
     setTimeout(() => {
       this.displayNumber2 = false;
-    }, 60000);
+    }, 15000);
     this.displayNumber2 = true;
     this.singleTest.Complete = true;
+    console.log(this.timesTakenArray);
   }
 
   addAnswer() {
@@ -93,11 +95,10 @@ export class FetchDataComponent implements OnInit {
         this.randomNo = data.randomNumber;
         this.result = "";
         this.displayNumber = true;
-        this.testCounter.push('Attempt ' + String(data.testNumber));
+        this.testCounter.push('Attempt ' + String(data.testNumber - 1));
         this.score = data.score;
-        this.testsTaken = data.testNumber;
+        this.testsTaken = data.testNumber - 1;
         this.testsPassed = data.score / 10;
-        //this.timerArray = ;
         this.functionNr1();
         this.startTimer();     
       })
@@ -129,6 +130,9 @@ export class FetchDataComponent implements OnInit {
         scaleLabel: {
           display: true,
           labelString: 'Seconds per Answer'
+        },
+        ticks: {
+          min: 0
         }
       }],
      xAxes: [{
@@ -147,7 +151,7 @@ export class FetchDataComponent implements OnInit {
 
   barChartData: ChartDataSets[] = [
     {
-      data: this.singleTest.TimesTaken, label: 'Seconds Taken'
+      data: this.timesTakenArray, label: 'Seconds Taken'
     }
   ];
 
