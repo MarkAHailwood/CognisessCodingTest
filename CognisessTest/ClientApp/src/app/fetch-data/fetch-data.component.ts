@@ -1,7 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { TestModel } from './TestModel';
 import { ApiService } from './Api.Service';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
@@ -12,7 +10,7 @@ import { Label } from 'ng2-charts';
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html'
 })
-export class FetchDataComponent implements OnInit {
+export class FetchDataComponent {
 
   title = 'Number Guessing Game';
   singleTest = new TestModel();
@@ -20,7 +18,6 @@ export class FetchDataComponent implements OnInit {
   tests: TestModel[];
   randomNo: string = "";
   result: string = "";
-  preValue: string = "";
   displayNumber: boolean = false;
   displayNumber2: boolean = true;
   displayPrimaryDiv: boolean = true;
@@ -35,8 +32,6 @@ export class FetchDataComponent implements OnInit {
   testCounter: string[] = [];
   timerArray: number[] = [];
   constructor(private apiService: ApiService) { }
-    ngOnInit() {
-    }
 
   beginGame() {
     this.functionNr2();
@@ -78,7 +73,6 @@ export class FetchDataComponent implements OnInit {
     }, 15000);
     this.displayNumber2 = true;
     this.singleTest.Complete = true;
-    console.log(this.timesTakenArray);
   }
 
   addAnswer() {
@@ -89,9 +83,7 @@ export class FetchDataComponent implements OnInit {
     this.singleTest.TimesTaken = this.timesTakenArray;
     this.apiService.addTest(this.singleTest)
       .subscribe(data => {
-        console.log(this.singleTest.TimesTaken);
         this.singleTest = data;
-        this.preValue = data.preValue;
         this.randomNo = data.randomNumber;
         this.result = "";
         this.displayNumber = true;

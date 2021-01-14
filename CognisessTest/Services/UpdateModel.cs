@@ -9,10 +9,8 @@ namespace CognisessTest.Services
     public class UpdateModel : IUpdateModel
     {
         private string rConverted = "";
-        private string preValue = "";
         private string secondaryParameter = "10000";
         private long r = 0;
-        //public List<int> timeTaken = new List<int>();
 
         public TestModel Updater(TestModel newModel)
         {
@@ -21,18 +19,9 @@ namespace CognisessTest.Services
             {
                 r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter));
                 rConverted = r.ToString();
-                newModel.PreValue = newModel.RandomNumber;
                 newModel.RandomNumber = rConverted;
                 newModel.TestNumber++;
 
-                return newModel;
-            }
-            else if(newModel.Complete == true)
-            {
-                if (newModel.Result == rConverted) newModel.Score += 10;
-                newModel.TestNumber++;
-                timeTaken.Add(newModel.TimeTaken);
-                newModel.TimesTaken = timeTaken.ToArray();
                 return newModel;
             }
             else
