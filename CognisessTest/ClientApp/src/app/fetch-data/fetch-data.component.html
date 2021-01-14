@@ -28,8 +28,9 @@
     <h1>Your score is: {{score}}</h1>
     <h3>Total attempts: {{testsTaken}}</h3>
     <h3>Total correct: {{testsPassed}}</h3>
+    <button class="btn btn-primary" (click)="restartGame()">Retry!</button>
     <div class="chart-wrapper">
-      <canvas  *ngIf="displayNumber2 == false" baseChart
+      <canvas *ngIf="displayNumber2 == false" baseChart
               [datasets]="barChartData"
               [labels]="barChartLabels"
               [options]="barChartOptions"
@@ -38,7 +39,6 @@
               [chartType]="barChartType">
       </canvas>
     </div>
-    <button class="btn btn-primary" (click)="restartGame()">Retry!</button>
   </div>
 </div>
 

@@ -23,8 +23,26 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\counter\**" />
+    <Content Remove="ClientApp\src\app\home\**" />
+    <Content Remove="Pages\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\counter\**" />
+    <None Remove="ClientApp\src\app\home\**" />
+    <None Remove="Pages\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ClientApp\src\app\counter\**" />
+    <Compile Remove="ClientApp\src\app\home\**" />
+    <Compile Remove="Pages\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\counter\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\home\**" />
+    <EmbeddedResource Remove="Pages\**" />
+    <TypeScriptCompile Remove="ClientApp\src\app\counter\**" />
+    <TypeScriptCompile Remove="ClientApp\src\app\home\**" />
+    <TypeScriptCompile Remove="Pages\**" />
   </ItemGroup>
 
   <ItemGroup>
