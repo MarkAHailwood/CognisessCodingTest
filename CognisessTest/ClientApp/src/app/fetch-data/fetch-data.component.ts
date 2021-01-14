@@ -24,7 +24,6 @@ export class FetchDataComponent {
   displaySecondaryDiv: boolean = false;
   score: number = 0;
   time: number = 0;
-  display;
   interval;
   timesTakenArray: number[] = [];
   testsTaken: number = 0;
@@ -70,7 +69,7 @@ export class FetchDataComponent {
   functionNr2() {
     setTimeout(() => {
       this.displayNumber2 = false;
-    }, 15000);
+    }, 60000);
     this.displayNumber2 = true;
     this.singleTest.Complete = true;
   }
@@ -104,13 +103,9 @@ export class FetchDataComponent {
       } else {
         this.time++;
       }
-      this.display = this.transform(this.time)
     }, 1000);
   }
-  transform(value: number): string {
-    const minutes: number = Math.floor(value / 60);
-    return minutes + ':' + (value - minutes * 60);
-  }
+
   pauseTimer() {
     clearInterval(this.interval);
   }
