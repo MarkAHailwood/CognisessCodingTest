@@ -11,11 +11,11 @@ namespace CognisessTest.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class NumberGameController : ControllerBase
     {
         private readonly IUpdateModel updateModel;
 
-        public WeatherForecastController(IUpdateModel _updateModel)
+        public NumberGameController(IUpdateModel _updateModel)
         {
             updateModel = _updateModel;
         }

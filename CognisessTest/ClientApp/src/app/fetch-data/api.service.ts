@@ -16,13 +16,13 @@ export class ApiService {
   getTest(testModel: TestModel): Observable<any> {
     const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(testModel);
-    return this.http.post(this._baseUrl + 'weatherforecast', body, { 'headers': headers })
+    return this.http.post(this._baseUrl + 'numbergame', body, { 'headers': headers })
   }
 
   addTest(testModel: TestModel): Observable<any> {
     const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(testModel);
-    return this.http.post(this._baseUrl + 'weatherforecast', body, { 'headers': headers })
+    return this.http.post(this._baseUrl + 'numbergame', body, { 'headers': headers })
   }
 }
 
