@@ -8,4 +8,4 @@ Answer to questions:
 3) If i had more time I would -
   a) Add exception handling.
   b) Move the visualisation to a separate component and nest it.
-  c) Make the back-end services asynchronous. 
+  c) Make the back-end services asynchronous - update: this has now been added (15/01).
