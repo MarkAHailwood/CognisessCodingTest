@@ -21,9 +21,9 @@ namespace CognisessTest.Controllers
         }
 
         [HttpPost]
-        public TestModel Post(TestModel newModel)
+        public async Task<TestModel> PostAsync(TestModel newModel)
         {
-            return updateModel.Updater(newModel);
+            return await updateModel.Updater(newModel);
         }
 
         [HttpGet]

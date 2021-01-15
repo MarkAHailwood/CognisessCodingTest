@@ -8,6 +8,6 @@ namespace CognisessTest.Services
 {
     public interface IUpdateModel
     {
-        public TestModel Updater(TestModel newModel);
+        public Task<TestModel> Updater(TestModel newModel);
     }
 }
