@@ -7,4 +7,5 @@ Answer to questions:
 2) I am most proud of the speed of the application, the simplicity and cleanliness of the back-end and the degree to which the brief was satisfied.
 3) If I had more time I would -
   a) Add exception handling.
-  b) Move the visualisation to a separate component and nest it in the root/main component.
+  b) Move the end-of-test visualisation to a separate component and nest it in the main component.
+  c) Use a determinate progress bar from Angular Material to display how much of the 60 seconds has passed.
