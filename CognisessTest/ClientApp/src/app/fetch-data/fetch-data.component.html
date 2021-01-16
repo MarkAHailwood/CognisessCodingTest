@@ -3,10 +3,10 @@
   <p>You will be shown a number on screen for 3 seconds. That number shall disappear and you will be prompted to enter it into an input - and click Submit!</p>
   <p>After 60 seconds the game will end and your score shall be shown on screen. You can click 'Retry!' to try again.</p>
   <p>Ready? Click Go! to begin.</p>
-  <button class="btn btn-primary" (click)="beginGame()">Go!</button>
+  <button mat-raised-button color="blue" (click)="beginGame()">Go!</button>
 </div>
 
-<div *ngIf="displaySecondaryDiv">
+<div *ngIf="displaySecondaryDiv" class="d-flex mx-auto">
   <div *ngIf="displayNumber2 == true">
     <h3 *ngIf="displayNumber == true">{{randomNo}}</h3>
     <div>
@@ -18,27 +18,53 @@
             </div>
             <input type="text" class="form-control" [(ngModel)]="result" placeholder="Enter number" /><br />
           </div>
-          <button class="btn btn-primary" (click)="addAnswer()">Submit!</button>
+          <button mat-raised-button color="blue" (click)="addAnswer()">Submit!</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div *ngIf="displayNumber2 == false">
-    <h1>Your score is: {{score}}</h1>
-    <h3>Total attempts: {{testsTaken}}</h3>
-    <h3>Total correct: {{testsPassed}}</h3>
-    <button class="btn btn-primary" (click)="restartGame()">Retry!</button>
-    <div class="chart-wrapper">
-      <canvas *ngIf="displayNumber2 == false" baseChart
-              [datasets]="barChartData"
-              [labels]="barChartLabels"
-              [options]="barChartOptions"
-              [plugins]="barChartPlugins"
-              [legend]="barChartLegend"
-              [chartType]="barChartType">
-      </canvas>
+<div class="container" *ngIf="displayNumber2 == false">
+  <div class="row" style="margin-left: 20px">
+    <div class="col-sm-4">
+      <div class="card" style="margin-right: 5px;">
+        <div class="card-body">
+          <h5 class="card-title">Your Score</h5><hr />
+          <p class="card-text">{{score}}</p>
+        </div>
+      </div>
     </div>
+    <div class="col-sm-4">
+      <div class="card" style="margin-right: 5px;">
+        <div class="card-body">
+          <h5 class="card-title">Total Attempts</h5><hr />
+          <p class="card-text">{{testsTaken}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card" style="margin-left: 5px;">
+        <div class="card-body">
+          <h5 class="card-title">Total Correct</h5><hr />
+          <p class="card-text">{{testsPassed}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div style="margin-left: 40px;">
+    <button mat-raised-button color="blue" (click)="restartGame()">Retry!</button>
+  </div>
+  <div class="chart-wrapper">
+    <canvas *ngIf="displayNumber2 == false" baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+    </canvas>
   </div>
 </div>
 

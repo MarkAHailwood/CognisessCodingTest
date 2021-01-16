@@ -8,7 +8,8 @@ import { Label } from 'ng2-charts';
 @Injectable({ providedIn: 'root' })
 @Component({
   selector: 'app-fetch-data',
-  templateUrl: './fetch-data.component.html'
+  templateUrl: './fetch-data.component.html',
+  styleUrls: ['./fetch-data.component.css']
 })
 export class FetchDataComponent {
 

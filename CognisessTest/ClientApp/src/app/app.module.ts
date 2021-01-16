@@ -8,6 +8,8 @@ import { ChartsModule, ThemeService } from 'ng2-charts';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     RouterModule.forRoot([
       { path: '', component: FetchDataComponent}
     ]),
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]

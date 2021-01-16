@@ -1,0 +1,22 @@
+
+.mat-button.mat-success:hover,
+.mat-stroked-button.mat-success:hover {
+  background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success,
+.mat-raised-button.mat-blue,
+.mat-raised-button.mat-blue:focus {
+  color: #ffffff;
+  background-color: #0094ff;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.mat-icon-button.mat-success {
+  color: #155724;
+}
