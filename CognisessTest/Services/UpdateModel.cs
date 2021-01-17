@@ -11,7 +11,7 @@ namespace CognisessTest.Services
         private string secondaryParameter = "10000";
         private long r = 0;
 
-        public async Task<TestModel> Updater(TestModel newModel)
+        public TestModel Updater(TestModel newModel)
         {
             List<int> timeTaken = new List<int>();
             if (newModel.TestNumber == 0)
