@@ -56,6 +56,7 @@ export class FetchDataComponent {
         this.singleTest = data;
         this.randomNo = data.randomNumber;
         this.result = data.result;
+        this.displayNumber2 = true;
         this.functionNr1();
       })
   }

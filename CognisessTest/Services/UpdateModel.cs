@@ -48,7 +48,7 @@ namespace CognisessTest.Services
                     secondaryParameter += "0";
                 }
                 if (secondaryParameter.Length < 8) r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter));
-                else r = Convert.ToInt64(newModel.RandomNumber) * 13;
+                else r = Convert.ToInt64(newModel.RandomNumber) * 17;
                 return r.ToString();
             }
         }
