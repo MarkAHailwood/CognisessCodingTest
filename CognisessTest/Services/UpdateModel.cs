@@ -13,7 +13,7 @@ namespace CognisessTest.Services
 
         public TestModel Updater(TestModel newModel)
         {
-            List<int> timeTaken = new List<int>();
+            //List<int> timeTaken = new List<int>();
             if (newModel.TestNumber == 0)
             {
                 newModel.RandomNumber = GetRandomNumber(newModel);
@@ -23,11 +23,11 @@ namespace CognisessTest.Services
             }
             else
             {
-                if (newModel.TimesTaken[0] > 0) foreach (int x in newModel.TimesTaken) timeTaken.Add(x);
-                if (newModel.Result == newModel.RandomNumber && newModel.Result != "") newModel.Score += 10;
+                //foreach (int x in newModel.TimesTaken) timeTaken.Add(x);
+                if (newModel.Result == newModel.RandomNumber) newModel.Score += 10;
                 newModel.RandomNumber = GetRandomNumber(newModel);
                 newModel.TestNumber++;
-                newModel.TimesTaken = timeTaken.ToArray();
+                //newModel.TimesTaken = timeTaken.ToArray();
 
                 return newModel;
             }
@@ -37,7 +37,7 @@ namespace CognisessTest.Services
         {
             if (newModel.TestNumber == 0)
             {
-                r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter));
+                r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)); //) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)
                 return r.ToString();
             }
             else
@@ -47,7 +47,7 @@ namespace CognisessTest.Services
                 {
                     secondaryParameter += "0";
                 }
-                if (secondaryParameter.Length < 8) r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter));
+                if (secondaryParameter.Length < 11) r = (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)); //) + (new Random()).Next(100, (int)Convert.ToInt64(secondaryParameter)
                 else r = Convert.ToInt64(newModel.RandomNumber) * 17;
                 return r.ToString();
             }

@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+//import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TestModel } from './TestModel';
 

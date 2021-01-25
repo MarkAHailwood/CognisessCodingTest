@@ -59,7 +59,7 @@
     <button mat-raised-button color="blue" (click)="restartGame()">Retry!</button>
   </div>
   <div class="chart-wrapper">
-    <canvas *ngIf="displayNumber2 == false" baseChart
+    <canvas baseChart
             [datasets]="barChartData"
             [labels]="barChartLabels"
             [options]="barChartOptions"

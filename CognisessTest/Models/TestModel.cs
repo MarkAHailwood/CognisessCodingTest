@@ -11,7 +11,6 @@ namespace CognisessTest.Models
         public int TestNumber { get; set; }
         public int Score { get; set; }
         public string Result { get; set; }
-        public bool Complete { get; set; }
         public int TimeTaken { get; set; }
         public int[] TimesTaken { get; set; }
         public TestModel()
@@ -20,7 +19,6 @@ namespace CognisessTest.Models
             TestNumber = 0;
             Score = 0;
             Result = "";
-            Complete = false;
             TimeTaken = 0;
         }
     }

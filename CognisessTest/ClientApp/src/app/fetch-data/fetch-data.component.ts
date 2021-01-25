@@ -1,22 +1,19 @@
 import { Component } from '@angular/core';
-import { Injectable } from '@angular/core';
 import { TestModel } from './TestModel';
 import { ApiService } from './Api.Service';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 
-@Injectable({ providedIn: 'root' })
 @Component({
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html',
   styleUrls: ['./fetch-data.component.css']
 })
+
 export class FetchDataComponent {
 
-  title = 'Number Guessing Game';
   singleTest = new TestModel();
   blankTest = new TestModel();
-  tests: TestModel[];
   randomNo: string = "";
   result: string = "";
   displayNumber: boolean = false;
@@ -71,9 +68,8 @@ export class FetchDataComponent {
   functionNr2() {
     setTimeout(() => {
       this.displayNumber2 = false;
-    }, 60000);
+    }, 10000);
     this.displayNumber2 = true;
-    this.singleTest.Complete = true;
   }
 
   addAnswer() {

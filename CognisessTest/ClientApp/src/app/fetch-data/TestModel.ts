@@ -3,7 +3,6 @@ export class TestModel {
   TestNumber: number;
   Score: number;
   Result: string;
-  Complete: boolean;
   TimeTaken: number;
   TimesTaken: number[] = [];
 }

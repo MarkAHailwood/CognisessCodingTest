@@ -25,12 +25,5 @@ namespace CognisessTest.Controllers
         {
             return updateModel.Updater(newModel);
         }
-
-        [HttpGet]
-        public TestModel Get()
-        {
-            var virginModel = new TestModel();
-            return virginModel;
-        }
     }
 }
