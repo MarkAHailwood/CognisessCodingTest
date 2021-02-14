@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CognisessTest.Data;
 using CognisessTest.Models;
 
 namespace CognisessTest.Services
@@ -10,7 +11,12 @@ namespace CognisessTest.Services
     {
         private string secondaryParameter = "10000";
         private long r = 0;
+        private readonly TestContext context;
 
+        public UpdateModel(TestContext context)
+        {
+            this.context = context;
+        }
         public TestModel Updater(TestModel newModel)
         {
             //List<int> timeTaken = new List<int>();
@@ -28,6 +34,8 @@ namespace CognisessTest.Services
                 newModel.RandomNumber = GetRandomNumber(newModel);
                 newModel.TestNumber++;
                 //newModel.TimesTaken = timeTaken.ToArray();
+                context.Update(newModel);
+                context.SaveChanges();
 
                 return newModel;
             }

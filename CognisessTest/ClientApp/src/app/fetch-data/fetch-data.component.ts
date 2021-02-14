@@ -68,7 +68,7 @@ export class FetchDataComponent {
   functionNr2() {
     setTimeout(() => {
       this.displayNumber2 = false;
-    }, 10000);
+    }, 20000);
     this.displayNumber2 = true;
   }
 

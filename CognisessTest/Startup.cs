@@ -1,8 +1,10 @@
+using CognisessTest.Data;
 using CognisessTest.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,8 +22,12 @@ namespace CognisessTest
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<TestContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
             services.AddScoped<IUpdateModel, UpdateModel>();
+
+            //services.AddDatabaseDeveloperPageExceptionFilter();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
